@@ -24,6 +24,38 @@ let startBtn = document.getElementById('start'),
     dayValue=document.querySelector('day-value');
 
 let money,time;
+function start(){
+    money=+prompt("Ваш бюджет на месяц?",'');
+    time=prompt("Введите дату",'');
+    while(isNaN(money)||money==''|| money==null){
+        money=+prompt("Ваш бюджет на месяц?",'');
+    }
+}
+start();
+let appData= {
+    budget=money,
+    timeData:time,
+    expenses:{},
+    optionalExpenses:{},
+    income:[],
+    savings:true,
+    chooseExpenses: function(){
+        for (let i;i<2;i++){
+    
+    let a = prompt('Введите обязательную статью расходов в этом месяце',''),
+        b= prompt('Во сколько вам это обойдётся?',"");
+    if ( typeof(a) ==='string' && typeof(a&&b)!=null && (a&&b) !='' && a.length<50){
+        console.log ("done");
+        
+                appData.expenses[a] = b;
+            } else {
+                console.log ("bad result");
+                i--;
+            
+        }
+    }
+},
+
 
 
 
