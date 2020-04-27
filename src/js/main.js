@@ -32,8 +32,8 @@ function start(){
     }
 }
 start();
-let appData= {
-    budget=money,
+let appData = {
+    budget : money,
     timeData:time,
     expenses:{},
     optionalExpenses:{},
@@ -55,10 +55,56 @@ let appData= {
         }
     }
 },
+detectDayBudget: function(){
+    appData.moneePerDay=(appData.budget/30).toFixed();
+    alert('Бюджет на один день составляет ' + appData.detectDayBudget("руб "));
+},
+detectDayBudgetLvl: function(){
+    if(appData.budget<100){
+    console.log('Низкий уровень достатка.');}
+        else if(appData.budget<2000){
+        console.log('Средний уровень достатка.');}
+        else if(appData.budgetValue>2000){
+            console.log('Высокий уровень достатка.');}
+        else {
+            console.log("Ошибка");
+        }
+},
+checkSavings: function(){
+    if (appData.savings==true){
+        let save = +prompt('Какова сумма накоплений?'),
+            percent= +prompt('Под какой процент?');
+            appData.monthIncome=save/100/12*percent;
+            alert('Доход с вашего процента'+appData.monthIncome);
+    }
+},
+chooseOptExpenses:function(){
+    for (let i; i<=3; i++){
+        let questionOptExpenses = prompt("Статья необязательных расходов?");
+        appData.optionalExpenses[i]=questionOptExpenses;{
+            console.log(appData.optionalExpenses);
+        }
+    }
+},
+chooseIncome:function(){
+    let items=prompt("Что принесёт вам доход?(перечислите через запятую", "");
 
-
-
-
+    if (typeof(items)!='string'|| items==""||typeof (items)==null){
+         console.log('Ошибка');
+    }
+    else {
+        appData.income=items.split(',');
+        appData.income.push(prompt('Может что-то еще?'));
+        appData.income.sort();
+    }
+    appData.income.forEach(function(itemmassive,i){
+        alert('способы заработка',+i+1+'-'+itemmassive);
+    });
+}
+};
+for (let key in appData){
+    console.log("Наша программа включате в себя данные:"+key+'-'+   appData[key]);
+}
 
 
 
